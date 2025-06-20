@@ -3,6 +3,16 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+
+    $cart_count = 0;
+    if (isset($_SESSION['email'])) {
+        require_once 'db_connection.php';
+        $email = $_SESSION['email'];
+        $result = $mysqli->query("SELECT COUNT(*) as cnt FROM cart WHERE email = '" . $mysqli->real_escape_string($email) . "'");
+        if ($result && $row = $result->fetch_assoc()) {
+            $cart_count = (int)$row['cnt'];
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +92,7 @@
                                 <li class="nav-item">
                                     <a href="cart.php" class="nav-link cart-icon <?php echo basename($_SERVER['PHP_SELF']) == 'cart.php' ? 'active' : ''; ?>">
                                         <i class="fas fa-shopping-cart"></i> Cart
-                                        <span class="cart-count">0</span>
+                                        <span class="cart-count"><?php echo $cart_count; ?></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">

@@ -15,7 +15,7 @@
 
     if ($result->num_rows > 0) {
       $_SESSION['email'] = $email;
-      header('location: account.php');
+      header('location: syncCart.php');
     } else {
       header('location: login.php?status=login-fail');
     }

@@ -470,8 +470,36 @@
                 }, 300);
             });
         }
+
+        // Before submitting login, save localStorage cart to sessionStorage
+        function saveCartToSession() {
+            var cart = localStorage.getItem('cart');
+            if (cart) {
+                sessionStorage.setItem('cartToSync', cart);
+            }
+        }
+        // Attach to login form
+        const loginForm = document.querySelector('form');
+        if (loginForm) {
+            loginForm.addEventListener('submit', saveCartToSession);
+        }
     ";
     
     // Include footer
     include 'footer.php';
 ?>
+
+<script>
+// Before submitting login, save localStorage cart to sessionStorage
+function saveCartToSession() {
+    var cart = localStorage.getItem('cart');
+    if (cart) {
+        sessionStorage.setItem('cartToSync', cart);
+    }
+}
+// Attach to login form
+const loginForm = document.querySelector('form');
+if (loginForm) {
+    loginForm.addEventListener('submit', saveCartToSession);
+}
+</script>
