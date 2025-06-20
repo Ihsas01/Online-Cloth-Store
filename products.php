@@ -21,50 +21,41 @@
     <!-- Filters Section -->
     <section class="filters-section" style="padding: 2rem 0; background: var(--bg-light);">
         <div class="container">
-            <div class="filters-content" data-aos="fade-up">
-                <div class="filters-row">
-                    <div class="filter-group">
-                        <label for="sort-select">Sort By:</label>
-                        <select id="sort-select" class="filter-select">
-                            <option value="default">Default Sorting</option>
-                            <option value="popularity">Sort By Popularity</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
-                            <option value="rating">Sort By Rating</option>
-                            <option value="newest">Newest First</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="category-filter">Category:</label>
-                        <select id="category-filter" class="filter-select">
-                            <option value="all">All Categories</option>
-                            <option value="casual">Casual Wear</option>
-                            <option value="formal">Formal Wear</option>
-                            <option value="sports">Sportswear</option>
-                            <option value="accessories">Accessories</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="price-range">Price Range:</label>
-                        <select id="price-range" class="filter-select">
-                            <option value="all">All Prices</option>
-                            <option value="0-50">$0 - $50</option>
-                            <option value="50-100">$50 - $100</option>
-                            <option value="100-200">$100 - $200</option>
-                            <option value="200+">$200+</option>
-                        </select>
-                    </div>
+            <div class="filter-panel" data-aos="fade-up">
+                <div class="filter-row">
+                    <label for="sort-select">Sort By:</label>
+                    <select id="sort-select" class="filter-select">
+                        <option value="default">Default Sorting</option>
+                        <option value="popularity">Sort By Popularity</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Sort By Rating</option>
+                        <option value="newest">Newest First</option>
+                    </select>
                 </div>
-                
-                <div class="view-options">
-                    <button class="view-btn active" data-view="grid">
-                        <i class="fas fa-th"></i>
-                    </button>
-                    <button class="view-btn" data-view="list">
-                        <i class="fas fa-list"></i>
-                    </button>
+                <div class="filter-row">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="casual">Casual Wear</option>
+                        <option value="formal">Formal Wear</option>
+                        <option value="sports">Sportswear</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <label for="price-range">Price Range:</label>
+                    <select id="price-range" class="filter-select">
+                        <option value="all">All Prices</option>
+                        <option value="0-50">$0 - $50</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100-200">$100 - $200</option>
+                        <option value="200+">$200+</option>
+                    </select>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" title="Grid View"><i class="fas fa-th"></i></button>
+                    <button class="view-btn" data-view="list" title="List View"><i class="fas fa-list"></i></button>
                 </div>
             </div>
         </div>
