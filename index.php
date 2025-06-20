@@ -530,6 +530,43 @@
         </div>
     </section>
 
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal" id="quick-view-modal" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle" tabindex="-1" style="display:none;">
+        <div class="quick-view-content">
+            <button class="close-modal" id="close-quick-view" aria-label="Close Quick View">&times;</button>
+            <h2 id="quickViewTitle">Product Quick View</h2>
+            <div class="quick-view-body">
+                <img src="images/products/10_10p.png" alt="Product Image" style="max-width:150px; border-radius:1rem; box-shadow:0 4px 24px rgba(0,0,0,0.12);">
+                <div style="margin-left:2rem;">
+                    <h3>Sample Product</h3>
+                    <p>This is a placeholder for the product quick view. You can enhance this to load product details dynamically.</p>
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Quick View Modal Logic
+    const quickViewModal = document.getElementById('quick-view-modal');
+    const closeQuickView = document.getElementById('close-quick-view');
+    document.querySelectorAll('.quick-view').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            quickViewModal.style.display = 'flex';
+            quickViewModal.focus();
+        });
+    });
+    closeQuickView.addEventListener('click', function() {
+        quickViewModal.style.display = 'none';
+    });
+    quickViewModal.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') quickViewModal.style.display = 'none';
+    });
+    quickViewModal.addEventListener('click', function(e) {
+        if (e.target === quickViewModal) quickViewModal.style.display = 'none';
+    });
+    </script>
+
 <?php
     // Page-specific inline scripts
     $inline_scripts = "
@@ -672,13 +709,6 @@
                     this.classList.add('active');
                     showNotification('Added to wishlist!', 'success');
                 }
-            });
-        });
-
-        // Quick View Functionality
-        document.querySelectorAll('.quick-view').forEach(button => {
-            button.addEventListener('click', function() {
-                showNotification('Quick view feature coming soon!', 'info');
             });
         });
 
