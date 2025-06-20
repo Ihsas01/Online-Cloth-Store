@@ -70,12 +70,6 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="cart.php" class="nav-link cart-icon">
-                                        <i class="fas fa-shopping-cart"></i> Cart
-                                        <span class="cart-count">0</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a href="logout.php" class="nav-link btn-login">
                                         <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>

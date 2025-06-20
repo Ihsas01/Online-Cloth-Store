@@ -90,12 +90,6 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="cart.php" class="nav-link cart-icon <?php echo basename($_SERVER['PHP_SELF']) == 'cart.php' ? 'active' : ''; ?>">
-                                        <i class="fas fa-shopping-cart"></i> Cart
-                                        <span class="cart-count"><?php echo $cart_count; ?></span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a href="logout.php" class="nav-link btn-login">
                                         <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
