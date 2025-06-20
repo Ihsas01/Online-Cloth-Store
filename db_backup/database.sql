@@ -48,8 +48,7 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`cart_id`, `p_id`, `email`) VALUES
 (1, 9, 'john@gmail.com'),
 (2, 9, 'john@gmail.com'),
-(3, 10, 'john@gmail.com'),
-(4, 9, 'akeelmohamed@gmail.com');
+
 
 -- --------------------------------------------------------
 
@@ -89,7 +88,6 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`fullname`, `email`, `password`, `phone`) VALUES
-('Akeel Mohamed', 'akeelmohamed@gmail.com', '123', 933933023),
 ('john doe', 'john@gmail.com', '123', 765535432);
 
 -- --------------------------------------------------------

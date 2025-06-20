@@ -21,8 +21,9 @@
     <!-- Filters Section -->
     <section class="filters-section" style="padding: 2rem 0; background: var(--bg-light);">
         <div class="container">
-            <div class="filter-panel" data-aos="fade-up">
-                <div class="filter-row">
+            <div class="filter-panel filter-panel-modern" data-aos="fade-up">
+                <div class="filter-row filter-row-modern">
+                    <span class="filter-icon"><i class="fas fa-sort-amount-down"></i></span>
                     <label for="sort-select">Sort By:</label>
                     <select id="sort-select" class="filter-select">
                         <option value="default">Default Sorting</option>
@@ -33,7 +34,8 @@
                         <option value="newest">Newest First</option>
                     </select>
                 </div>
-                <div class="filter-row">
+                <div class="filter-row filter-row-modern">
+                    <span class="filter-icon"><i class="fas fa-tags"></i></span>
                     <label for="category-filter">Category:</label>
                     <select id="category-filter" class="filter-select">
                         <option value="all">All Categories</option>
@@ -43,19 +45,24 @@
                         <option value="accessories">Accessories</option>
                     </select>
                 </div>
-                <div class="filter-row">
+                <div class="filter-row filter-row-modern">
+                    <span class="filter-icon"><i class="fas fa-money-bill-wave"></i></span>
                     <label for="price-range">Price Range:</label>
                     <select id="price-range" class="filter-select">
                         <option value="all">All Prices</option>
-                        <option value="0-50">$0 - $50</option>
-                        <option value="50-100">$50 - $100</option>
-                        <option value="100-200">$100 - $200</option>
-                        <option value="200+">$200+</option>
+                        <option value="0-50">LKR 0 - LKR 50</option>
+                        <option value="50-100">LKR 50 - LKR 100</option>
+                        <option value="100-200">LKR 100 - LKR 200</option>
+                        <option value="200+">LKR 200+</option>
                     </select>
                 </div>
-                <div class="view-toggle">
+                <div class="filter-row filter-row-modern view-toggle-row">
+                    <span class="filter-icon"><i class="fas fa-th-large"></i></span>
                     <button class="view-btn active" data-view="grid" title="Grid View"><i class="fas fa-th"></i></button>
                     <button class="view-btn" data-view="list" title="List View"><i class="fas fa-list"></i></button>
+                </div>
+                <div class="filter-row filter-row-modern reset-row">
+                    <button id="reset-filters" class="btn btn-outline" type="button"><i class="fas fa-undo"></i> Reset Filters</button>
                 </div>
             </div>
         </div>
@@ -91,7 +98,7 @@
                             echo '</div>';
                             echo '<div class="product-content">';
                             echo '<h3 class="product-title">'.$row['p_name'].'</h3>';
-                            echo '<div class="product-price">$'.$row['price'].'.00</div>';
+                            echo '<div class="product-price">LKR '.$row['price'].'.00</div>';
                             echo '<div class="product-rating">';
                             echo '<i class="fas fa-star"></i>';
                             echo '<i class="fas fa-star"></i>';
@@ -120,7 +127,7 @@
                 </div>
             </div>
             <!-- Pagination -->
-            <div class="pagination" data-aos="fade-up">
+            <div class="pagination pagination-modern" data-aos="fade-up">
                 <button class="page-btn active">1</button>
                 <button class="page-btn">2</button>
                 <button class="page-btn">3</button>
@@ -226,8 +233,140 @@
         sortSelect.addEventListener('change', filterProducts);
         categoryFilter.addEventListener('change', filterProducts);
         priceRange.addEventListener('change', filterProducts);
+
+        document.getElementById('reset-filters').onclick = function() {
+            document.getElementById('sort-select').selectedIndex = 0;
+            document.getElementById('category-filter').selectedIndex = 0;
+            document.getElementById('price-range').selectedIndex = 0;
+            // Optionally trigger filterProducts() if needed
+            if (typeof filterProducts === 'function') filterProducts();
+        };
     ";
     
     // Include footer
     include 'footer.php';
 ?> 
+
+<style>
+.filter-panel-modern {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 6px 32px rgba(30,41,59,0.08);
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.filter-row-modern {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0;
+}
+.filter-icon {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+.filter-select {
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    background: #f8fafc;
+    transition: border 0.2s;
+}
+.filter-select:focus {
+    border: 1.5px solid var(--primary-color);
+    outline: none;
+}
+.view-btn {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.view-btn.active, .view-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(30,41,59,0.08);
+}
+.reset-row {
+    margin-left: auto;
+}
+#reset-filters {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+@media (max-width: 900px) {
+    .filter-panel-modern {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.2rem;
+        padding: 1.2rem 1rem;
+    }
+    .reset-row {
+        margin-left: 0;
+    }
+}
+.pagination-modern {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2.5rem 0 1rem 0;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(30,41,59,0.07);
+    padding: 1rem 2rem;
+}
+.page-btn {
+    border: none;
+    background: #f8fafc;
+    color: var(--primary-color);
+    font-size: 1.15rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(30,41,59,0.04);
+    outline: none;
+}
+.page-btn.active, .page-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(30,41,59,0.09);
+}
+.page-btn i {
+    font-size: 1.1rem;
+}
+@media (max-width: 600px) {
+    .pagination-modern {
+        padding: 0.7rem 0.5rem;
+        gap: 0.2rem;
+    }
+    .page-btn {
+        padding: 0.5rem 0.7rem;
+        font-size: 1rem;
+    }
+}
+</style>
+<script>
+document.getElementById('reset-filters').onclick = function() {
+    document.getElementById('sort-select').selectedIndex = 0;
+    document.getElementById('category-filter').selectedIndex = 0;
+    document.getElementById('price-range').selectedIndex = 0;
+    // Optionally trigger filterProducts() if needed
+    if (typeof filterProducts === 'function') filterProducts();
+};
+</script> 

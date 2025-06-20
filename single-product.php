@@ -137,9 +137,9 @@
                     </div>
 
                     <div class="product-price">
-                        <span class="current-price">$<?php echo $product['price']; ?>.00</span>
-                        <span class="original-price">$<?php echo $product['price'] + 20; ?>.00</span>
-                        <span class="discount">Save $20.00</span>
+                        <span class="current-price">LKR <?php echo $product['price']; ?>.00</span>
+                        <span class="original-price">LKR <?php echo $product['price'] + 20; ?>.00</span>
+                        <span class="discount">Save LKR 20.00</span>
                     </div>
 
                     <div class="product-description">
@@ -350,7 +350,7 @@
                             echo '</div>';
                             echo '<div class="product-content">';
                             echo '<h3 class="product-title">'.$related_product['p_name'].'</h3>';
-                            echo '<div class="product-price">$'.$related_product['price'].'.00</div>';
+                            echo '<div class="product-price">LKR '.$related_product['price'].'.00</div>';
                             echo '<div class="product-rating">';
                             echo '<i class="fas fa-star"></i>';
                             echo '<i class="fas fa-star"></i>';

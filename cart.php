@@ -55,14 +55,14 @@ include 'header.php';
                     </div>
                     <div class="item-details">
                         <h3><?php echo htmlspecialchars($item['p_name']); ?></h3>
-                        <div class="product-price">$<?php echo number_format($item['price'], 2); ?></div>
+                        <div class="product-price">LKR <?php echo number_format($item['price'], 2); ?></div>
                     </div>
                     <div class="quantity-controls">
                         <button class="quantity-btn minus" data-id="<?php echo $item['p_id']; ?>">-</button>
                         <span class="quantity-display" id="qty-<?php echo $item['p_id']; ?>"><?php echo $item['quantity']; ?></span>
                         <button class="quantity-btn plus" data-id="<?php echo $item['p_id']; ?>">+</button>
                     </div>
-                    <div class="subtotal-amount">$<?php echo number_format($item['subtotal'], 2); ?></div>
+                    <div class="subtotal-amount">LKR <?php echo number_format($item['subtotal'], 2); ?></div>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -79,7 +79,7 @@ include 'header.php';
                 <div class="summary-items">
                     <div class="summary-item">
                         <span>Subtotal</span>
-                        <span>$<?php echo number_format($total, 2); ?></span>
+                        <span>LKR <?php echo number_format($total, 2); ?></span>
                     </div>
                     <div class="summary-item">
                         <span>Shipping</span>
@@ -89,7 +89,7 @@ include 'header.php';
                 <div class="summary-divider" style="border-top:1px solid #e2e8f0;margin:16px 0;"></div>
                 <div class="summary-total" style="font-size:1.3rem;font-weight:700;display:flex;justify-content:space-between;">
                     <span>Total</span>
-                    <span>$<?php echo number_format($total, 2); ?></span>
+                    <span>LKR <?php echo number_format($total, 2); ?></span>
                 </div>
                 <div class="summary-actions" style="margin-top:24px;display:flex;gap:12px;">
                     <a href="checkout.php" class="btn btn-primary" style="flex:1;"><i class="fas fa-credit-card"></i> Proceed to Checkout</a>

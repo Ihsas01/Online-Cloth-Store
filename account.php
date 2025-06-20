@@ -298,13 +298,13 @@
                                             <div class="item-details">
                                                 <h5>Premium Denim Jacket</h5>
                                                 <span>Size: M | Color: Blue</span>
-                                                <span class="item-price">$89.99</span>
+                                                <span class="item-price">LKR 89.99</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="order-footer">
                                         <div class="order-total">
-                                            <span>Total: $89.99</span>
+                                            <span>Total: LKR 89.99</span>
                                         </div>
                                         <div class="order-actions">
                                             <button class="btn btn-outline">Track Order</button>
@@ -330,13 +330,13 @@
                                             <div class="item-details">
                                                 <h5>Casual T-Shirt</h5>
                                                 <span>Size: L | Color: White</span>
-                                                <span class="item-price">$29.99</span>
+                                                <span class="item-price">LKR 29.99</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="order-footer">
                                         <div class="order-total">
-                                            <span>Total: $29.99</span>
+                                            <span>Total: LKR 29.99</span>
                                         </div>
                                         <div class="order-actions">
                                             <button class="btn btn-outline">Track Order</button>
@@ -366,7 +366,7 @@
                                     </div>
                                     <div class="item-content">
                                         <h4>Premium Hoodie</h4>
-                                        <p class="item-price">$79.99</p>
+                                        <p class="item-price">LKR 79.99</p>
                                         <div class="item-actions">
                                             <button class="btn btn-primary">Add to Cart</button>
                                             <button class="btn btn-outline">View Details</button>
@@ -383,7 +383,7 @@
                                     </div>
                                     <div class="item-content">
                                         <h4>Designer Jeans</h4>
-                                        <p class="item-price">$129.99</p>
+                                        <p class="item-price">LKR 129.99</p>
                                         <div class="item-actions">
                                             <button class="btn btn-primary">Add to Cart</button>
                                             <button class="btn btn-outline">View Details</button>

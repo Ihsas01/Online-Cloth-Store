@@ -79,7 +79,7 @@
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-dollar-sign"></i>
-                                <span>Free on orders $50+</span>
+                                <span>Free on orders LKR 50+</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-box"></i>
@@ -91,8 +91,8 @@
                             </div>
                         </div>
                         <div class="option-price">
-                            <span class="price">$5.99</span>
-                            <span class="price-note">or FREE on orders $50+</span>
+                            <span class="price">LKR 5.99</span>
+                            <span class="price-note">or FREE on orders LKR 50+</span>
                         </div>
                         <div class="option-tip">
                             <i class="fas fa-lightbulb"></i>
@@ -129,8 +129,8 @@
                             </div>
                         </div>
                         <div class="option-price">
-                            <span class="price">$12.99</span>
-                            <span class="price-note">or FREE on orders $100+</span>
+                            <span class="price">LKR 12.99</span>
+                            <span class="price-note">or FREE on orders LKR 100+</span>
                         </div>
                         <div class="option-tip">
                             <i class="fas fa-lightbulb"></i>
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <div class="option-price">
-                            <span class="price">$24.99</span>
+                            <span class="price">LKR 24.99</span>
                             <span class="price-note">Available for most locations</span>
                         </div>
                         <div class="option-tip">
@@ -387,10 +387,10 @@
                     <div class="card-content">
                         <p>International shipping costs vary by location and package weight. Calculate shipping at checkout.</p>
                         <ul>
-                            <li>Canada: $15.99 - $25.99</li>
-                            <li>Europe: $19.99 - $35.99</li>
-                            <li>Asia: $22.99 - $39.99</li>
-                            <li>Australia: $24.99 - $42.99</li>
+                            <li>Canada: LKR 15.99 - LKR 25.99</li>
+                            <li>Europe: LKR 19.99 - LKR 35.99</li>
+                            <li>Asia: LKR 22.99 - LKR 39.99</li>
+                            <li>Australia: LKR 24.99 - LKR 42.99</li>
                         </ul>
                     </div>
                 </div>
@@ -439,7 +439,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! We offer free standard shipping on all orders $50 and above within the United States. International orders have different minimums.</p>
+                        <p>Yes! We offer free standard shipping on all orders LKR 50 and above within the United States. International orders have different minimums.</p>
                     </div>
                 </div>
                 

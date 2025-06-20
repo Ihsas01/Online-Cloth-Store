@@ -231,7 +231,7 @@
                             echo '</div>';
                             echo '<div class="product-content">';
                             echo '<h3 class="product-title">'.$row['p_name'].'</h3>';
-                            echo '<div class="product-price">$'.$row['price'].'.00</div>';
+                            echo '<div class="product-price">LKR '.$row['price'].'.00</div>';
                             echo '<div class="product-rating">';
                             echo '<i class="fas fa-star"></i>';
                             echo '<i class="fas fa-star"></i>';
@@ -290,7 +290,7 @@
                             echo '</div>';
                             echo '<div class="product-content">';
                             echo '<h3 class="product-title">'.$row['p_name'].'</h3>';
-                            echo '<div class="product-price">$'.$row['price'].'.00</div>';
+                            echo '<div class="product-price">LKR '.$row['price'].'.00</div>';
                             echo '<div class="product-rating">';
                             echo '<i class="fas fa-star"></i>';
                             echo '<i class="fas fa-star"></i>';
