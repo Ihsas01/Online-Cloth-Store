@@ -85,6 +85,14 @@
                             </li>
                             <?php if (isset($_SESSION['email'])): ?>
                                 <li class="nav-item">
+                                    <a href="cart.php" class="nav-link cart-icon">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <?php if ($cart_count > 0): ?>
+                                            <span class="cart-count"><?php echo $cart_count; ?></span>
+                                        <?php endif; ?>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="account.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'account.php' ? 'active' : ''; ?>">
                                         <i class="fas fa-user"></i> Account
                                     </a>
