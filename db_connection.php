@@ -3,7 +3,7 @@
   $server   = "localhost";
   $username = "root";
   $password = "";
-  $db_name  = "artist_db";
+  $db_name  = "Different Wear";
 
   $mysqli = new mysqli($server, $username, $password, $db_name);
 

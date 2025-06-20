@@ -8,11 +8,10 @@
 -- PHP Version: 8.1.10
 
 
-CREATE DATABASE IF NOT EXISTS artist_db;
+CREATE DATABASE IF NOT EXISTS `Different Wear`;
 
 -- Step 2: Use the database
-USE artist_db;
-
+USE `Different Wear`;
 
 
 
@@ -27,7 +26,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `artist_db`
+-- Database: `Different Wear`
 --
 
 -- --------------------------------------------------------
@@ -212,4 +211,4 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */; 
