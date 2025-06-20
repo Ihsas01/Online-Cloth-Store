@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-    echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Clear Cart</title></head><body style="background:#f8fafc;display:flex;align-items:center;justify-content:center;height:100vh;"><div style="background:#fff;padding:2.5rem 2rem;border-radius:1.5rem;box-shadow:0 6px 32px rgba(30,41,59,0.09);text-align:center;max-width:350px;width:90vw;"><div style="font-size:2.5rem;color:#ef4444;margin-bottom:1rem;"><i class=\'fas fa-exclamation-triangle\'></i></div><h2 style="color:#1e293b;margin-bottom:1rem;">You must be logged in to clear your cart.</h2><a href="login.php" class="btn btn-primary" style="display:inline-block;margin-top:1.5rem;padding:0.7rem 2rem;background:#6366f1;color:#fff;border-radius:0.5rem;text-decoration:none;font-weight:600;transition:background 0.2s;">Login</a></div></body></html>';
+    header('Location: login.php');
     exit;
 }
 require 'db_connection.php';
@@ -11,6 +11,9 @@ $mysqli->query("DELETE FROM cart WHERE email = '$email'");
 if (isset($_SESSION['cart_count'])) {
     $_SESSION['cart_count'] = 0;
 }
+// Immediately redirect to cart.php after clearing
+header('Location: cart.php');
+exit;
 ?>
 <!DOCTYPE html>
 <html lang="en">

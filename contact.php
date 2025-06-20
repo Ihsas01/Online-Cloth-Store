@@ -151,7 +151,7 @@
                             
                             <div class="form-group">
                                 <label class="checkbox-wrapper">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox" name="agree" required>
                                     <span class="checkmark"></span>
                                     I agree to the <a href="#" class="link">Privacy Policy</a> and <a href="#" class="link">Terms of Service</a>
                                 </label>

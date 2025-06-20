@@ -1,19 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2023 at 03:12 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Jun 20, 2025 at 04:31 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 
 CREATE DATABASE IF NOT EXISTS `Different Wear`;
-
--- Step 2: Use the database
-USE `Different Wear`;
-
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,7 +21,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Different Wear`
+-- Database: `different wear`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +34,7 @@ CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `p_id` int(11) NOT NULL,
   `email` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
@@ -48,7 +43,11 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`cart_id`, `p_id`, `email`) VALUES
 (1, 9, 'john@gmail.com'),
 (2, 9, 'john@gmail.com'),
-
+(3, 10, 'john@gmail.com'),
+(4, 9, 'akeelmohamed@gmail.com'),
+(44, 14, 'mohamedihsas001@gmail.com'),
+(45, 14, 'mohamedihsas001@gmail.com'),
+(46, 14, 'mohamedihsas001@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -61,7 +60,7 @@ CREATE TABLE `contact` (
   `fullname` varchar(150) NOT NULL,
   `email` varchar(150) NOT NULL,
   `message` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contact`
@@ -81,14 +80,14 @@ CREATE TABLE `customer` (
   `email` varchar(150) NOT NULL,
   `password` varchar(150) NOT NULL,
   `phone` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`fullname`, `email`, `password`, `phone`) VALUES
-('john doe', 'john@gmail.com', '123', 765535432);
+('ihsas', 'mohamedihsas001@gmail.com', '123', 76123456);
 
 -- --------------------------------------------------------
 
@@ -103,21 +102,21 @@ CREATE TABLE `product` (
   `price` decimal(10,0) NOT NULL,
   `description` varchar(300) NOT NULL,
   `picture` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`p_id`, `p_name`, `p_type`, `price`, `description`, `picture`) VALUES
-(7, 'Puma Silk Black Shirt', 'new-arrival', '150', 'Branded', '7_1p.png'),
-(9, 'Cotton Org T-shirts', 'new-arrival', '200', 'Branded', '9_3p.png'),
-(10, 'kyro Patch Denim', 'new-arrival', '300', 'Branded', '10_10p.png'),
-(11, 'Linen Org ', 'new-arrival', '400', 'Branded', '11_2p.png'),
-(12, 'Addidas-Hoodie ', 'latest-fashion', '200', 'Branded', '12_cat1.png'),
-(13, 'Blazer Full-Kit ', 'latest-fashion', '400', 'Branded', '13_6p.png'),
-(14, 'Denim Shirt ', 'latest-fashion', '232', 'Branded', '14_4p.png'),
-(15, 'Water Proof Jumper ', 'latest-fashion', '235', 'Branded', '15_9p.png');
+(7, 'Puma Silk Black Shirt', 'new-arrival', 150, 'Branded', '7_1p.png'),
+(9, 'Cotton Org T-shirts', 'new-arrival', 200, 'Branded', '9_3p.png'),
+(10, 'kyro Patch Denim', 'new-arrival', 300, 'Branded', '10_10p.png'),
+(11, 'Linen Org ', 'new-arrival', 400, 'Branded', '11_2p.png'),
+(12, 'Addidas-Hoodie ', 'latest-fashion', 200, 'Branded', '12_cat1.png'),
+(13, 'Blazer Full-Kit ', 'latest-fashion', 400, 'Branded', '13_6p.png'),
+(14, 'Denim Shirt ', 'latest-fashion', 232, 'Branded', '14_4p.png'),
+(15, 'Water Proof Jumper ', 'latest-fashion', 235, 'Branded', '15_9p.png');
 
 -- --------------------------------------------------------
 
@@ -129,7 +128,7 @@ CREATE TABLE `user_logs` (
   `username` varchar(150) NOT NULL,
   `password` varchar(150) NOT NULL,
   `user_group` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_logs`
@@ -182,7 +181,7 @@ ALTER TABLE `user_logs`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -209,4 +208,4 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */; 
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
