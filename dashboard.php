@@ -157,15 +157,27 @@
                         $result = $mysqli->query($sql);
                         if ($result->num_rows > 0) {
                             echo "<table class='table table-striped table-hover align-middle'>";
-                            echo "<thead class='table-dark'><tr><th>Product ID</th><th>Product Name</th><th>Product Type</th><th>Price</th><th>Description</th><th>Picture</th></tr></thead><tbody>";
+                            echo "<thead class='table-dark'><tr><th>Product ID</th><th>Product Name</th><th>Product Type</th><th>Price</th><th>Description</th><th>Picture</th><th>Actions</th></tr></thead><tbody>";
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
                                 echo "<td>" . $row['p_id'] . "</td>";
                                 echo "<td>" . $row['p_name'] . "</td>";
                                 echo "<td>" . $row['p_type'] . "</td>";
-                                echo "<td>" . $row['price'] . "</td>";
+                                echo "<td>$" . $row['price'] . "</td>";
                                 echo "<td>" . $row['description'] . "</td>";
                                 echo "<td><img width='80' class='img-thumbnail' src='images/products/" . $row['picture']. "'></td>";
+                                echo "<td>
+                                        <button class='btn btn-primary btn-sm me-1' onclick='editProduct(" . $row['p_id'] . ", \"" . addslashes($row['p_name']) . "\", \"" . $row['p_type'] . "\", " . $row['price'] . ", \"" . addslashes($row['description']) . "\", \"" . $row['picture'] . "\")'>
+                                            <i class='bi bi-pencil'></i> Edit
+                                        </button>
+                                        <form action='adminProductHandler.php' method='post' class='d-inline'>
+                                            <input type='hidden' name='action' value='delete'>
+                                            <input type='hidden' name='p_id' value='" . $row['p_id'] . "'>
+                                            <button type='submit' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this product?\")'>
+                                                <i class='bi bi-trash'></i> Delete
+                                            </button>
+                                        </form>
+                                      </td>";
                                 echo "</tr>";
                             }
                             echo "</tbody></table>";
@@ -257,6 +269,60 @@
             </div>
         </main>
     </div>
+    <!-- Edit Product Modal -->
+    <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="adminProductHandler.php" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <input type="hidden" name="action" value="edit">
+                        <input type="hidden" name="p_id" id="edit_p_id">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="edit_p_name" class="form-label">Product Name</label>
+                                <input type="text" name="p_name" id="edit_p_name" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit_p_type" class="form-label">Product Type</label>
+                                <select name="p_type" id="edit_p_type" class="form-select" required>
+                                    <option value="">Select Product Type</option>
+                                    <option value="new-arrival">New Arrival</option>
+                                    <option value="latest-fashion">Latest Fashion</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit_price" class="form-label">Price</label>
+                                <input type="number" name="price" id="edit_price" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit_picture" class="form-label">New Picture (Optional)</label>
+                                <input type="file" name="picture" id="edit_picture" class="form-control">
+                                <small class="text-muted">Leave empty to keep current picture</small>
+                            </div>
+                            <div class="col-12">
+                                <label for="edit_description" class="form-label">Description</label>
+                                <textarea name="description" id="edit_description" class="form-control" rows="3" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Current Picture</label>
+                                <div>
+                                    <img id="current_picture" src="" alt="Current Product Picture" class="img-thumbnail" style="max-width: 200px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -301,6 +367,20 @@
     document.addEventListener('DOMContentLoaded', function() {
         showSection('products');
     });
+    
+    // Edit Product Function
+    function editProduct(p_id, p_name, p_type, price, description, picture) {
+        document.getElementById('edit_p_id').value = p_id;
+        document.getElementById('edit_p_name').value = p_name;
+        document.getElementById('edit_p_type').value = p_type;
+        document.getElementById('edit_price').value = price;
+        document.getElementById('edit_description').value = description;
+        document.getElementById('current_picture').src = 'images/products/' + picture;
+        
+        // Show the modal
+        const editModal = new bootstrap.Modal(document.getElementById('editProductModal'));
+        editModal.show();
+    }
     </script>
 </body>
 </html>
