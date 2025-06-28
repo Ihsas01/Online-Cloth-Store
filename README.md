@@ -62,8 +62,7 @@ Input validation & prepared statements
 
 Meta tags and clean URLs for search engines
 
-📄 License
-MIT License
+
 
 🙏 Acknowledgments
 Font Awesome, Google Fonts, AOS, Unsplash
