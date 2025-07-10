@@ -207,6 +207,17 @@
     </style>
 </head>
 <body>
+<?php if (isset($_GET['profile_status'])): ?>
+    <?php if ($_GET['profile_status'] === 'success'): ?>
+        <div class="alert alert-success text-center m-3">Profile updated successfully!</div>
+    <?php elseif ($_GET['profile_status'] === 'fail'): ?>
+        <div class="alert alert-danger text-center m-3">Failed to update profile. Please try again.</div>
+    <?php elseif ($_GET['profile_status'] === 'exists'): ?>
+        <div class="alert alert-warning text-center m-3">Username already exists. Please choose another.</div>
+    <?php elseif ($_GET['profile_status'] === 'empty'): ?>
+        <div class="alert alert-info text-center m-3">Please fill in all fields.</div>
+    <?php endif; ?>
+<?php endif; ?>
     <nav class="navbar navbar-dark bg-dark d-lg-none">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" id="sidebarToggle">
@@ -243,7 +254,7 @@
                         <i class="bi bi-caret-down-fill ms-1 text-secondary"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#adminProfileModal">Profile</a></li>
                         <li><a class="dropdown-item" href="#" onclick="window.location.href='adminLogout.php'">Logout</a></li>
                     </ul>
                 </div>
@@ -487,6 +498,44 @@
                 </form>
             </div>
         </div>
+    </div>
+    <!-- Admin Profile Modal -->
+    <div class="modal fade" id="adminProfileModal" tabindex="-1" aria-labelledby="adminProfileModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="adminProfileHandler.php" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="adminProfileModalLabel">Admin Profile</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <?php
+                $admin_username = $_SESSION['username'];
+                $sql = "SELECT * FROM user_logs WHERE username = '$admin_username' LIMIT 1";
+                $result = $mysqli->query($sql);
+                $admin = $result && $result->num_rows > 0 ? $result->fetch_assoc() : null;
+              ?>
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" value="<?php echo htmlspecialchars($admin['username'] ?? ''); ?>" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" value="<?php echo htmlspecialchars($admin['password'] ?? ''); ?>" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">User Group</label>
+                <input type="text" class="form-control" value="<?php echo htmlspecialchars($admin['user_group'] ?? ''); ?>" readonly>
+              </div>
+              <input type="hidden" name="old_username" value="<?php echo htmlspecialchars($admin['username'] ?? ''); ?>">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
