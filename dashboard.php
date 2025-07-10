@@ -354,6 +354,17 @@
             <div id="users" class="card" style="display:none;">
                 <div class="card-body">
                     <h3 class="card-title mb-4 section-title"><i class="bi bi-person-badge"></i> Users</h3>
+                    <?php if (isset($_GET['user_status'])): ?>
+                        <?php if ($_GET['user_status'] === 'success'): ?>
+                            <div class="alert alert-success">User added successfully!</div>
+                        <?php elseif ($_GET['user_status'] === 'fail'): ?>
+                            <div class="alert alert-danger">Failed to add user. Please try again.</div>
+                        <?php elseif ($_GET['user_status'] === 'exists'): ?>
+                            <div class="alert alert-warning">Username already exists. Please choose another.</div>
+                        <?php elseif ($_GET['user_status'] === 'empty'): ?>
+                            <div class="alert alert-info">Please fill in all fields.</div>
+                        <?php endif; ?>
+                    <?php endif; ?>
                     <form action="adminUserHandler.php" method="post" class="row g-3 mb-4" style="max-width: 600px; margin: 0 auto;">
                         <div class="col-md-4">
                             <input type="text" name="username" class="form-control" placeholder="Username" required>
