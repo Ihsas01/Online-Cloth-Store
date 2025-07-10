@@ -354,6 +354,24 @@
             <div id="users" class="card" style="display:none;">
                 <div class="card-body">
                     <h3 class="card-title mb-4 section-title"><i class="bi bi-person-badge"></i> Users</h3>
+                    <form action="adminUserHandler.php" method="post" class="row g-3 mb-4" style="max-width: 600px; margin: 0 auto;">
+                        <div class="col-md-4">
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="col-md-4">
+                            <select name="user_group" class="form-select" required>
+                                <option value="">Select Group</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                        <div class="col-12 text-end">
+                            <button type="submit" class="btn btn-custom">Add User</button>
+                        </div>
+                    </form>
                     <div class="table-responsive">
                         <?php
                         $sql = "SELECT * FROM user_logs";
