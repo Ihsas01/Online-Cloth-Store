@@ -248,6 +248,17 @@
                     </ul>
                 </div>
             </div>
+            <div id="dashboard" class="card" style="display:none;">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3 section-title"><i class="bi bi-speedometer2"></i> Dashboard</h3>
+                    <h2 class="fw-bold mb-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+                    <p class="lead text-secondary">We're glad to see you back. Manage your store efficiently and keep track of your products, customers, and more from this dashboard.</p>
+                    <div class="alert alert-info mt-4 mx-auto" style="max-width: 400px;">
+                        <i class="bi bi-info-circle me-2"></i>
+                        This is your admin dashboard. Use the sidebar to navigate between sections.
+                    </div>
+                </div>
+            </div>
             <div id="products" class="card" style="display:none;">
                 <div class="card-body">
                     <h3 class="card-title mb-4 section-title"><i class="bi bi-box-seam"></i> Products</h3>
