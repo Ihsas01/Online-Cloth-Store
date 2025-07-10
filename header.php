@@ -102,10 +102,12 @@
                                         <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
                                 </li>
-                            <?php else: ?>
+                            <?php endif; ?>
+                            <?php if (isset(
+                                $_SESSION['username'])): ?>
                                 <li class="nav-item">
-                                    <a href="login.php" class="nav-link btn-login <?php echo basename($_SERVER['PHP_SELF']) == 'login.php' ? 'active' : ''; ?>">
-                                        <i class="fas fa-sign-in-alt"></i> Login
+                                    <a href="dashboard.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
+                                        <i class="fas fa-tachometer-alt"></i> Dashboard
                                     </a>
                                 </li>
                             <?php endif; ?>

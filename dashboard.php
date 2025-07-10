@@ -111,6 +111,7 @@
                 <h4 class="fw-bold text-white">Admin Panel</h4>
             </div>
             <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item"><a href="dashboard.php" class="nav-link" data-section="dashboard"><i class="bi bi-speedometer2 me-2"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a href="#products" class="nav-link" data-section="products"><i class="bi bi-box-seam me-2"></i><span>Products</span></a></li>
                 <li><a href="#customers" class="nav-link" data-section="customers"><i class="bi bi-people me-2"></i><span>Customers</span></a></li>
                 <li><a href="#users" class="nav-link" data-section="users"><i class="bi bi-person-badge me-2"></i><span>Users</span></a></li>
@@ -121,7 +122,7 @@
         <main class="main-content flex-grow-1 p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="mb-0">Welcome, Admin</h2>
-                <a href="index.php" class="btn btn-primary" target="_blank"><i class="bi bi-globe me-1"></i>Go to Website</a>
+                <a href="index.php" class="btn btn-primary"><i class="bi bi-globe me-1"></i>Go to Website</a>
             </div>
             <div id="products" class="card" style="display:none;">
                 <div class="card-body">
