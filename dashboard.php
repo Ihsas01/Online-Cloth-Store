@@ -13,27 +13,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
-            background: #f8fafc;
+            background: linear-gradient(135deg, #f8fafc 0%, #e3f0ff 100%);
+            font-family: 'Inter', Arial, sans-serif;
         }
         .sidebar {
             min-height: 100vh;
-            background: #212529;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
             color: #fff;
-            transition: width 0.3s;
+            transition: width 0.3s, left 0.3s;
+            box-shadow: 2px 0 12px rgba(0,0,0,0.07);
+            position: relative;
+        }
+        .sidebar .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .sidebar .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #38b6ff;
+            background: #fff;
         }
         .sidebar .nav-link {
             color: #adb5bd;
-            transition: background 0.2s, color 0.2s;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+            border-radius: 0.5rem;
+            margin-bottom: 0.25rem;
+            padding: 0.75rem 1rem;
+            position: relative;
         }
         .sidebar .nav-link.active, .sidebar .nav-link:hover {
-            background: #343a40;
+            background: linear-gradient(90deg, #38b6ff 0%, #4f8cff 100%);
             color: #fff;
+            padding-left: 1.5rem;
+            box-shadow: 0 2px 8px rgba(56,182,255,0.08);
+        }
+        .sidebar .nav-link .bi {
+            font-size: 1.2rem;
         }
         .sidebar-collapsed {
             width: 60px !important;
@@ -44,13 +71,24 @@
         .sidebar-collapsed .sidebar-header {
             display: none;
         }
+        .sidebar-collapsed .nav-link {
+            text-align: center;
+            padding-left: 0.5rem;
+        }
+        .main-content {
+            transition: margin-left 0.3s;
+        }
         .card {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 16px rgba(56,182,255,0.07);
             border: none;
-            border-radius: 1rem;
-            transition: box-shadow 0.3s;
+            border-radius: 1.2rem;
+            transition: box-shadow 0.3s, transform 0.2s;
             margin-bottom: 2rem;
             animation: fadeInUp 0.7s;
+        }
+        .card:hover {
+            box-shadow: 0 6px 24px rgba(56,182,255,0.13);
+            transform: translateY(-2px) scale(1.01);
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -60,18 +98,82 @@
             border-radius: 1rem;
             overflow: hidden;
         }
+        .table {
+            background: #fff;
+        }
+        .table thead {
+            background: linear-gradient(90deg, #38b6ff 0%, #4f8cff 100%);
+            color: #fff;
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #f3f8ff;
+        }
         .form-control, .form-select {
             border-radius: 0.5rem;
+            box-shadow: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .btn-custom {
+        .form-control:focus, .form-select:focus {
+            border-color: #38b6ff;
+            box-shadow: 0 0 0 2px rgba(56,182,255,0.15);
+        }
+        .btn-custom, .btn-primary {
             background: linear-gradient(90deg, #4f8cff, #38b6ff);
             color: #fff;
             border: none;
             border-radius: 0.5rem;
-            transition: background 0.2s;
+            transition: background 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-custom:hover {
+        .btn-custom:hover, .btn-primary:hover {
             background: linear-gradient(90deg, #38b6ff, #4f8cff);
+            box-shadow: 0 4px 16px rgba(56,182,255,0.13);
+        }
+        .btn-danger {
+            border-radius: 0.5rem;
+        }
+        .btn:active::after {
+            content: '';
+            position: absolute;
+            left: 50%; top: 50%;
+            width: 120%; height: 120%;
+            background: rgba(56,182,255,0.15);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple 0.4s linear;
+            z-index: 1;
+        }
+        @keyframes ripple {
+            to { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1040;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(56,182,255,0.07);
+            border-radius: 0 0 1rem 1rem;
+            padding: 1rem 2rem;
+        }
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #38b6ff;
+            background: #fff;
+        }
+        .dropdown-menu {
+            border-radius: 0.7rem;
+            box-shadow: 0 4px 16px rgba(56,182,255,0.13);
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: #38b6ff;
         }
         @media (max-width: 991.98px) {
             .sidebar {
@@ -94,6 +196,14 @@
                 margin-left: 220px;
             }
         }
+        @media (max-width: 575.98px) {
+            .main-content {
+                padding: 1rem !important;
+            }
+            .sticky-header {
+                padding: 0.5rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -108,25 +218,39 @@
     <div class="d-flex">
         <nav class="sidebar flex-shrink-0 p-3" id="sidebar" style="width:220px;">
             <div class="sidebar-header mb-4">
-                <h4 class="fw-bold text-white">Admin Panel</h4>
+                <img src="images/logos1.png" alt="Admin Avatar" class="avatar">
+                <h4 class="fw-bold text-white mb-0">Admin Panel</h4>
             </div>
             <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item"><a href="dashboard.php" class="nav-link" data-section="dashboard"><i class="bi bi-speedometer2 me-2"></i><span>Dashboard</span></a></li>
-                <li class="nav-item"><a href="#products" class="nav-link" data-section="products"><i class="bi bi-box-seam me-2"></i><span>Products</span></a></li>
-                <li><a href="#customers" class="nav-link" data-section="customers"><i class="bi bi-people me-2"></i><span>Customers</span></a></li>
-                <li><a href="#users" class="nav-link" data-section="users"><i class="bi bi-person-badge me-2"></i><span>Users</span></a></li>
-                <li><a href="#contact" class="nav-link" data-section="contact"><i class="bi bi-envelope me-2"></i><span>Contact FAQ</span></a></li>
-                <li><a href="#logout" class="nav-link text-danger" data-section="logout"><i class="bi bi-box-arrow-right me-2"></i><span>Logout</span></a></li>
+                <li class="nav-item"><a href="dashboard.php" class="nav-link" data-section="dashboard" title="Dashboard"><i class="bi bi-speedometer2 me-2"></i><span>Dashboard</span></a></li>
+                <li class="nav-item"><a href="#products" class="nav-link" data-section="products" title="Products"><i class="bi bi-box-seam me-2"></i><span>Products</span></a></li>
+                <li><a href="#customers" class="nav-link" data-section="customers" title="Customers"><i class="bi bi-people me-2"></i><span>Customers</span></a></li>
+                <li><a href="#users" class="nav-link" data-section="users" title="Users"><i class="bi bi-person-badge me-2"></i><span>Users</span></a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact" title="Contact FAQ"><i class="bi bi-envelope me-2"></i><span>Contact FAQ</span></a></li>
+                <li><a href="#logout" class="nav-link text-danger" data-section="logout" title="Logout"><i class="bi bi-box-arrow-right me-2"></i><span>Logout</span></a></li>
             </ul>
         </nav>
         <main class="main-content flex-grow-1 p-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="mb-0">Welcome, Admin</h2>
-                <a href="index.php" class="btn btn-primary"><i class="bi bi-globe me-1"></i>Go to Website</a>
+            <div class="sticky-header d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex align-items-center gap-2">
+                    <h2 class="mb-0 fw-bold">Welcome, Admin</h2>
+                    <span class="badge bg-info text-dark ms-2">Online</span>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-decoration-none" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="images/logos1.png" alt="Admin Avatar" class="admin-avatar me-2">
+                        <span class="d-none d-md-inline text-dark fw-semibold">Admin</span>
+                        <i class="bi bi-caret-down-fill ms-1 text-secondary"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="window.location.href='adminLogout.php'">Logout</a></li>
+                    </ul>
+                </div>
             </div>
             <div id="products" class="card" style="display:none;">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Products</h3>
+                    <h3 class="card-title mb-4 section-title"><i class="bi bi-box-seam"></i> Products</h3>
                     <form action="adminProductHandler.php" method="post" enctype="multipart/form-data" class="row g-3 mb-4">
                         <div class="col-md-6">
                             <input type="text" name="p_name" class="form-control" placeholder="Product Name" required>
@@ -191,7 +315,7 @@
             </div>
             <div id="customers" class="card" style="display:none;">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Customers</h3>
+                    <h3 class="card-title mb-4 section-title"><i class="bi bi-people"></i> Customers</h3>
                     <div class="table-responsive">
                         <?php
                         $sql = "SELECT * FROM customer";
@@ -218,7 +342,7 @@
             </div>
             <div id="users" class="card" style="display:none;">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Users</h3>
+                    <h3 class="card-title mb-4 section-title"><i class="bi bi-person-badge"></i> Users</h3>
                     <div class="table-responsive">
                         <?php
                         $sql = "SELECT * FROM user_logs";
@@ -243,7 +367,7 @@
             </div>
             <div id="contact" class="card" style="display:none;">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Contact FAQ</h3>
+                    <h3 class="card-title mb-4 section-title"><i class="bi bi-envelope"></i> Contact FAQ</h3>
                     <div class="table-responsive">
                         <?php
                         $sql = "SELECT * FROM contact";
@@ -335,6 +459,15 @@
             sidebar.classList.toggle('show');
         });
     }
+    // Sidebar collapse/expand for desktop
+    let isCollapsed = false;
+    sidebar.addEventListener('dblclick', function() {
+        if (window.innerWidth >= 992) {
+            sidebar.classList.toggle('sidebar-collapsed');
+            isCollapsed = !isCollapsed;
+            document.querySelector('.main-content').style.marginLeft = isCollapsed ? '60px' : '220px';
+        }
+    });
     // Section navigation and animation
     const navLinks = document.querySelectorAll('.sidebar .nav-link');
     const cards = document.querySelectorAll('.main-content .card');
@@ -363,12 +496,24 @@
                 }
             }
         });
+        // Tooltip for nav icons
+        new bootstrap.Tooltip(link, {placement: 'right'});
     });
     // Show first section by default
     document.addEventListener('DOMContentLoaded', function() {
         showSection('products');
     });
-    
+    // Ripple effect for buttons
+    document.querySelectorAll('.btn, .btn-custom, .btn-primary').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = `${e.offsetX}px`;
+            ripple.style.top = `${e.offsetY}px`;
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 400);
+        });
+    });
     // Edit Product Function
     function editProduct(p_id, p_name, p_type, price, description, picture) {
         document.getElementById('edit_p_id').value = p_id;
@@ -377,7 +522,6 @@
         document.getElementById('edit_price').value = price;
         document.getElementById('edit_description').value = description;
         document.getElementById('current_picture').src = 'images/products/' + picture;
-        
         // Show the modal
         const editModal = new bootstrap.Modal(document.getElementById('editProductModal'));
         editModal.show();
