@@ -425,12 +425,14 @@
                         $result = $mysqli->query($sql);
                         if ($result->num_rows > 0) {
                             echo "<table class='table table-striped table-hover align-middle'>";
-                            echo "<thead class='table-dark'><tr><th>Contact ID</th><th>Full Name</th><th>Email</th><th>Message</th><th>Action</th></tr></thead><tbody>";
+                            echo "<thead class='table-dark'><tr><th>Contact ID</th><th>Full Name</th><th>Email</th><th>Phone</th><th>Subject</th><th>Message</th><th>Action</th></tr></thead><tbody>";
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
                                 echo "<td>" . $row['contact_id'] . "</td>";
                                 echo "<td>" . $row['fullname'] . "</td>";
                                 echo "<td>" . $row['email'] . "</td>";
+                                echo "<td>" . (isset($row['phone']) ? $row['phone'] : '-') . "</td>";
+                                echo "<td>" . (isset($row['subject']) ? $row['subject'] : '-') . "</td>";
                                 echo "<td>" . $row['message'] . "</td>";
                                 echo "<td><form action='adminContactHandler.php' method='post' class='d-inline'><input type='hidden' name='contact_id' value='" . $row['contact_id'] . "'><button type='submit' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i> Delete</button></form></td>";
                                 echo "</tr>";
