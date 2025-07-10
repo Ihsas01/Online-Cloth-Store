@@ -572,6 +572,8 @@
         }
         navLinks.forEach(link => link.classList.remove('active'));
         document.querySelector(`.sidebar .nav-link[data-section="${sectionId}"]`).classList.add('active');
+        // Save the current section to localStorage
+        localStorage.setItem('dashboard_active_section', sectionId);
     }
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -590,9 +592,10 @@
         // Tooltip for nav icons
         new bootstrap.Tooltip(link, {placement: 'right'});
     });
-    // Show first section by default
+    // Show last active section or default to 'products' on page load
     document.addEventListener('DOMContentLoaded', function() {
-        showSection('products');
+        const lastSection = localStorage.getItem('dashboard_active_section') || 'products';
+        showSection(lastSection);
     });
     // Ripple effect for buttons
     document.querySelectorAll('.btn, .btn-custom, .btn-primary').forEach(btn => {
