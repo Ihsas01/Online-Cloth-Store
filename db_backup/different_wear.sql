@@ -60,6 +60,8 @@ CREATE TABLE `contact` (
   `contact_id` int(11) NOT NULL,
   `fullname` varchar(150) NOT NULL,
   `email` varchar(150) NOT NULL,
+  `phone` varchar(100) DEFAULT NULL,
+  `subject` varchar(100) DEFAULT NULL,
   `message` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -67,8 +69,8 @@ CREATE TABLE `contact` (
 -- Dumping data for table `contact`
 --
 
-INSERT INTO `contact` (`contact_id`, `fullname`, `email`, `message`) VALUES
-(1, 'john doe', 'john@gmail.com', 'Do you have black denim?');
+INSERT INTO `contact` (`contact_id`, `fullname`, `email`, `phone`, `subject`, `message`) VALUES
+(1, 'john doe', 'john@gmail.com', '1234567890', 'General Inquiry', 'Do you have black denim?');
 
 -- --------------------------------------------------------
 

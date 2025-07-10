@@ -7,11 +7,11 @@
     $fullname = $_POST['fullname'];
     $email    = $_POST['email'];
     $message  = $_POST['message'];
-    // $phone    = isset($_POST['phone']) ? $_POST['phone'] : '';
-    // $subject  = isset($_POST['subject']) ? $_POST['subject'] : '';
+    $phone    = isset($_POST['phone']) ? $_POST['phone'] : '';
+    $subject  = isset($_POST['subject']) ? $_POST['subject'] : '';
    
 
-    $sql = "INSERT INTO contact (fullname, email, message) VALUES ('$fullname', '$email', '$message')";
+    $sql = "INSERT INTO contact (fullname, email, phone, subject, message) VALUES ('$fullname', '$email', '$phone', '$subject', '$message')";
 
     $result = $mysqli->query($sql);
     
